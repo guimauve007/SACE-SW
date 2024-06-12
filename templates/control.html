@@ -1,0 +1,44 @@
+<html lang="en">
+  {% include 'head.html' %}
+   <body>
+    {% include 'header.html' %}
+    
+    <section class="section">
+      <div class="container">
+          <h1 class="title">Control Panel</h1>
+          <div class="button-container">
+            <h2 class="button-title">LED 1</h2>
+            <input id="led-button" type="button" value="On/OFF" class="button is-primary led-button">
+          </div>
+      </div>
+  </section>
+      
+    
+    {% include 'footer.html' %}
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <script>
+      var socket = io();
+
+      socket.on('led_state', function(msg) {
+          var ledButton = document.getElementById('led-button');
+          if (msg === 'ON') {
+              ledButton.style.backgroundColor = 'green';
+              ledButton.value = 'ON';
+          } else if (msg === 'OFF') {
+              ledButton.style.backgroundColor = 'red';
+              ledButton.value = 'OFF';
+          }
+          console.log('Button color after led_state event:', ledButton.style.backgroundColor);
+          console.log('message:', msg);
+      });
+
+      document.getElementById('led-button').addEventListener('click', function() {
+          socket.emit('button_pressed');
+          console.log('button clicked');
+      });
+    </script>
+
+   </body>
+</html>
+

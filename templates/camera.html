@@ -1,0 +1,70 @@
+<html lang="en">
+  {% include 'head.html' %}
+   <body>
+    {% include 'header.html' %}
+    
+    <section class="section">
+      <div class="container video-container">
+        <div class="video-block">
+            <h1 class="title">Caméra 1</h1>
+            <video autoplay="true" id="videoElement1"></video>
+        </div>
+    
+        <div class="video-block">
+            <h1 class="title">Caméra 2</h1>
+            <video autoplay="true" id="videoElement2"></video>
+        </div>
+      </div>
+
+        <script>
+            var video1 = document.querySelector("#videoElement1");
+            var video2 = document.querySelector("#videoElement2");
+
+            navigator.mediaDevices.enumerateDevices()
+              .then(function(devices) {
+                var videoDevices = [null, null];
+                devices.forEach(function(device) {
+                  if (device.kind === 'videoinput') {
+                    if (videoDevices[0] === null) {
+                      videoDevices[0] = device.deviceId;
+                    } else if (videoDevices[1] === null) {
+                      videoDevices[1] = device.deviceId;
+                    }
+                  }
+                });
+
+                return videoDevices;
+              })
+              .then(function(videoDevices) {
+                if (navigator.mediaDevices.getUserMedia) {
+                  navigator.mediaDevices.getUserMedia({ video: { deviceId: videoDevices[0] } })
+                      .then(function (stream) {
+                          video1.srcObject = stream;
+                      })
+                      .catch(function (error) {
+                          console.log("Something went wrong with camera 1!");
+                      });
+
+                  if (videoDevices[1] !== null) {
+                    navigator.mediaDevices.getUserMedia({ video: { deviceId: videoDevices[1] } })
+                        .then(function (stream) {
+                            video2.srcObject = stream;
+                        })
+                        .catch(function (error) {
+                            console.log("Something went wrong with camera 2!");
+                        });
+                  }
+                }
+              });
+        </script>
+
+
+    </section>
+      
+    
+    {% include 'footer.html' %}
+    
+
+   </body>
+</html>
+

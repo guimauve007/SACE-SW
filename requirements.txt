@@ -1,0 +1,5 @@
+# Add project dependencies here
+flask==3.0.3
+paho-mqtt==2.1.0
+python-socketio==5.11.2
+flask-socketio==5.3.6

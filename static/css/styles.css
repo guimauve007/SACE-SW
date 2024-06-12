@@ -1,0 +1,85 @@
+/* styles.css */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.page-title {
+    font-size: 3em;
+    color: #ffffff;
+    text-align: center;
+    background-color: #303030;
+    font-family: 'Times new roman', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #e9e9e9;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: #121212; /* Dark mode background color */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+.footer {
+    flex-shrink: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #303030; /* Dark mode footer color */
+    color: #e0e0e0; /* Dark mode text color */
+}
+
+.custom-navbar {
+    background-color: #202020; /* Dark mode navbar color */
+    border-top: 2px solid  #7a7a7a; /* Dark mode border color */
+}
+
+.custom-navbar-item {
+    color: #e0e0e0; /* Dark mode text color */
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.custom-navbar-item:hover {
+    color: #007bff; /* Light blue text on hover for a pop of color */
+}
+
+.video-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-title {
+    margin-right: 20px;
+    font-size: 24px;
+    color: #4a4a4a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.led-button {
+    padding: 0; /* Remove padding */
+    max-width: 100px; /* Set a maximum width */
+    box-sizing: border-box;
+}

@@ -1,0 +1,33 @@
+<html lang="en">
+  {% include 'head.html' %}
+   <body>
+    {% include 'header.html' %}
+    
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          SACE Main Page
+        </h1> 
+        <form action = "http://localhost:5000/message" method = "post" class="box"> 
+          <div class="field">
+            <label class="label">Entrée:</label>
+            <div class="control">
+              <input class="input" type = "text" name = "nm" />
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <input class="button is-primary" type = "submit" value = "Soumettre" />
+            </div>
+          </div>
+
+
+      </div>
+    </section>
+      
+    
+    {% include 'footer.html' %}
+
+   </body>
+</html>
+
