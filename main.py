@@ -11,7 +11,7 @@ socketio = SocketIO(app)
 client = mqtt.Client()
 
 # Connect to the MQTT broker
-client.connect("localhost", 1883, 60)
+client.connect("192.168.1.8", 1883, 60)
 
 client.subscribe("/led_state")
 
