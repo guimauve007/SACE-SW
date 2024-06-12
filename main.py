@@ -59,5 +59,5 @@ if __name__ == '__main__':
     client.loop_start()
 
     # Run the Flask-SocketIO server
-    socketio.run(app, debug=True)
+    socketio.run(app, host='0.0.0.0', port=3000, debug=True)
 
