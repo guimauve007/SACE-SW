@@ -41,6 +41,11 @@ body {
     margin-top: auto;
 }
 
+.active {
+    background-color: #7a7a7a; /* or any color you prefer */
+    color: white; /* or any color you prefer */
+}
+
 .custom-navbar {
     background-color: #202020; /* Dark mode navbar color */
     border-top: 2px solid  #7a7a7a; /* Dark mode border color */
@@ -52,7 +57,7 @@ body {
 }
 
 .custom-navbar-item:hover {
-    color: #007bff; /* Light blue text on hover for a pop of color */
+    color: #000000;
 }
 
 .video-container {
