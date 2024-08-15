@@ -32,15 +32,8 @@ body {
 }
 
 .my-footer {
-    /* flex-shrink: 0; */
-    /* position: absolute; */
-    /* bottom: 0; */
-    /* width: 100%; */
-    /* height: 60px; Set the fixed height of the footer here */
-    /* line-height: 60px; Vertically center the text there */
     background-color: #303030; /* Dark mode footer color*/
     color: #e0e0e0; /*Dark mode text color*/
-    /* margin-top: auto; */
 }
 
 .active {

@@ -12,7 +12,7 @@ socketio = SocketIO(app)
 client = mqtt.Client()
 
 # Connect to the MQTT broker
-client.connect("192.168.10.137", 1883, 60)
+client.connect("192.168.10.101", 1883, 60)
 
 client.subscribe("/led_state")
 
@@ -50,13 +50,13 @@ def home():
 def control():
     return render_template('control.html')
 
+@app.route('/status')
+def status():
+    return render_template('status.html')
+
 @app.route('/cameras')
 def cameras():
     return render_template('camera.html')
-
-@app.route('/success/<name>')
-def success(name):
-    return '<script>alert("Message: %s"); window.location = "/";</script>' % name
 
 @app.route('/message', methods=['POST', 'GET'])
 def login():

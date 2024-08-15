@@ -1,17 +1,72 @@
 <html lang="en">
   {% include 'head.html' %}
-   <body>
+  <body>
     {% include 'header.html' %}
-    
+
     <section class="section">
       <div class="container">
-          <h1 class="title">Control Panel</h1>
-          <div class="button-container">
-            <h2 class="button-title">LED 1</h2>
-            <input id="led-button" type="button" value="On/OFF" class="button is-primary led-button">
+        <h1 class="title is-1">Panneau de contrôle</h1>
+        <br>
+        <h1 class="title is-3">Spindle</h1>
+        <div class="button-container">
+          <div class="columns is-multiline">
+            <div class="column is-one-third">
+              <label class="label">Spindle ON/OFF</label>
+              <input id="led-button1" type="button" value="Unavailable" class="button is-primary led-button is-fullwidth">
+            </div>
+
+            <div class="column is-one-third">
+              <label class="label">Spindle F/R</label>
+              <input id="led-button2" type="button" value="Unavailable" class="button is-primary led-button is-fullwidth">
+            </div>
+
+            <div class="column is-one-third">
+              <label class="label">Vitesse</label>
+              <div class="control">
+                <input id="spindle-speed" type="range" min="0" max="15000" value="0" class="slider is-fullwidth" oninput="updateSpeedDisplay(this.value)">
+                <span id="speed-display" class="tag is-info ml-2">0 RPM</span>
+              </div>
+              <p class="help">Glisser le curseur pour ajuster la vitesse (0 à 15000 RPM)</p>
+            </div>
+
+            
           </div>
+        </div>
+        <br>
+        <h1 class="title is-3">Électrodes</h1>
+        <div class="button-container">
+          <div class="columns is-multiline">
+            <div class="column is-one-third">
+              <label class="label">Rapport cyclique (%)</label>
+              <input id="duty-cycle" type="number" min="0" max="100" value="100" class="input is-primary is-fullwidth">
+            </div>
+
+            <div class="column is-one-third">
+              <label class="label">Tension (V)</label>
+              <input id="voltage" type="number" min="0" max="100" value="30" class="input is-primary is-fullwidth">
+            </div>
+
+            <div class="column is-one-third">
+              <label class="label">Limite de courant (A)</label>
+              <input id="current" type="number" min="0" max="10" value="5" class="input is-primary is-fullwidth">
+            </div>
+          </div>
+        </div>
+        
+        <br>
+        <h1 class="title is-3">Accessoires</h1>
+        <div class="button-container">
+          <div class="columns is-multiline">
+            <div class="column is-one-quarter">
+              <label class="label">Spindle Fan</label>
+              <input id="led-button" type="button" value="Unavailable" class="button is-primary led-button is-fullwidth">
+            </div>
+          </div>
+        </div>
       </div>
-  </section>
+    </section>
+
+
       
     
     {% include 'footer.html' %}
@@ -37,6 +92,10 @@
           socket.emit('button_pressed');
           console.log('button clicked');
       });
+
+      function updateSpeedDisplay(value) {
+        document.getElementById('speed-display').innerText = value + ' RPM';
+      }
     </script>
 
    </body>
