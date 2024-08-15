@@ -36,17 +36,23 @@
         <h1 class="title is-3">Électrodes</h1>
         <div class="button-container">
           <div class="columns is-multiline">
-            <div class="column is-one-third">
+
+            <div class="column is-one-quarter">
+              <label class="label">Fréquence (Hz)</label>
+              <input id="current" type="number" min="0" max="10000" value="1000" class="input is-primary is-fullwidth">
+            </div>
+
+            <div class="column is-one-quarter">
               <label class="label">Rapport cyclique (%)</label>
               <input id="duty-cycle" type="number" min="0" max="100" value="100" class="input is-primary is-fullwidth">
             </div>
 
-            <div class="column is-one-third">
+            <div class="column is-one-quarter">
               <label class="label">Tension (V)</label>
               <input id="voltage" type="number" min="0" max="100" value="30" class="input is-primary is-fullwidth">
             </div>
 
-            <div class="column is-one-third">
+            <div class="column is-one-quarter">
               <label class="label">Limite de courant (A)</label>
               <input id="current" type="number" min="0" max="10" value="5" class="input is-primary is-fullwidth">
             </div>
