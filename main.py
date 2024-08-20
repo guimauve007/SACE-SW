@@ -14,13 +14,15 @@ client = mqtt.Client()
 # Connect to the MQTT broker
 client.connect("192.168.10.101", 1883, 60)
 
-client.subscribe("/led_state")
+client.subscribe("/state/spindleFan")
+
 
 # Define a callback function for when an MQTT message is received
 def on_message(client, userdata, message):
     # Emit a Socket.IO event with the message payload
-    socketio.emit('led_state', message.payload.decode('utf-8'))
     # print(message.payload.decode('utf-8'))
+    # print(message.topic)
+    socketio.emit('state', message.payload.decode('utf-8'))
 
 # Set the callback function
 client.on_message = on_message
@@ -37,9 +39,9 @@ def gen_frames():
             frame = buffer.tobytes()
             socketio.emit('image', frame)
 
-@socketio.on('button_pressed')
+@socketio.on('fan_button/pressed')
 def handle_button_pressed():
-    client.publish('/led_ctl', 'TOGGLE')
+    client.publish('ctl/spindleFanButton', 'TOGGLE')
 
 
 @app.route('/')

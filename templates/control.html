@@ -12,12 +12,12 @@
           <div class="columns is-multiline">
             <div class="column is-one-third">
               <label class="label">Spindle ON/OFF</label>
-              <input id="led-button1" type="button" value="Unavailable" class="button is-primary led-button is-fullwidth">
+              <input id="fan-button1" type="button" value="Unavailable" class="button is-primary fan-button is-fullwidth">
             </div>
 
             <div class="column is-one-third">
               <label class="label">Spindle F/R</label>
-              <input id="led-button2" type="button" value="Unavailable" class="button is-primary led-button is-fullwidth">
+              <input id="fan-button2" type="button" value="Unavailable" class="button is-primary fan-button is-fullwidth">
             </div>
 
             <div class="column is-one-third">
@@ -65,7 +65,7 @@
           <div class="columns is-multiline">
             <div class="column is-one-quarter">
               <label class="label">Spindle Fan</label>
-              <input id="led-button" type="button" value="Unavailable" class="button is-primary led-button is-fullwidth">
+              <input id="fan-button" type="button" value="Unavailable" class="button is-primary fan-button is-fullwidth">
             </div>
           </div>
         </div>
@@ -81,21 +81,24 @@
     <script>
       var socket = io();
 
-      socket.on('led_state', function(msg) {
-          var ledButton = document.getElementById('led-button');
+      socket.on('state', function(msg) {
+    
+        console.log(msg);
+
+          var fanButton = document.getElementById('fan-button');
           if (msg === 'ON') {
-              ledButton.style.backgroundColor = 'green';
-              ledButton.value = 'ON';
+              fanButton.style.backgroundColor = 'green';
+              fanButton.value = 'ON';
           } else if (msg === 'OFF') {
-              ledButton.style.backgroundColor = 'red';
-              ledButton.value = 'OFF';
+              fanButton.style.backgroundColor = 'red';
+              fanButton.value = 'OFF';
           }
-          console.log('Button color after led_state event:', ledButton.style.backgroundColor);
-          console.log('message:', msg);
+          console.log('Spindle fan state changed to:', fanButton.style.backgroundColor);
+          
       });
 
-      document.getElementById('led-button').addEventListener('click', function() {
-          socket.emit('button_pressed');
+      document.getElementById('fan-button').addEventListener('click', function() {
+          socket.emit('fan_button/pressed');
           console.log('button clicked');
       });
 
