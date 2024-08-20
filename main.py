@@ -58,14 +58,6 @@ def status():
 def cameras():
     return render_template('camera.html')
 
-@app.route('/message', methods=['POST', 'GET'])
-def login():
-    if request.method == 'POST':
-        user = request.form['nm']
-        return redirect(url_for('success', name=user))
-    else:
-        user = request.args.get('nm')
-        return redirect(url_for('success', name=user))
 
 if __name__ == '__main__':
     # Start the MQTT client
