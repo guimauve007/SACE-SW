@@ -9,9 +9,7 @@
       <div class="container">
         <div class="box">
           <h1 class="title">Bassin</h1>
-          <figure class="image is-16by9">
-            <img id="camera-feed" alt="Camera Feed">
-          </figure>
+            <img id="ip-camera-feed" src="http://100.112.18.97:8081" alt="IP Camera Feed" style="width: 100%; height: auto;">
         </div>
       </div>
     </section>
@@ -19,24 +17,6 @@
     {% include 'footer.html' %}
   </body>
 
-  <script>
-    var socket = io();
-
-    socket.on('image', function(data) {
-      var img = document.getElementById('camera-feed');
-      img.src = 'data:image/jpeg;base64,' + arrayBufferToBase64(data);
-    });
-
-    function arrayBufferToBase64(buffer) {
-      var binary = '';
-      var bytes = new Uint8Array(buffer);
-      var len = bytes.byteLength;
-      for (var i = 0; i < len; i++) {
-        binary += String.fromCharCode(bytes[i]);
-      }
-      return window.btoa(binary);
-    }
-  </script>
 </html>
 
 
